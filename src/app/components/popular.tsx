@@ -30,6 +30,7 @@ const ProductListPage = () => {
           productName,
           productImages,
           popular,
+          sale,
           _type // Add _type to distinguish between manProduct and womanProduct
         }`;
         const res = await client.fetch(query);
@@ -113,9 +114,11 @@ if(error){
                 <Card
                   image={urlFor(product.productImages[0]).url()}
                   id={product._id}
-                  price={product.price}
+                  newPrice={product.price}
+                  price={product.oldPrice}
                   name={product.productName}
                   popular={product.popular}
+                  isSale={product.sale}
                 />
               </CarouselItem>
             ))}
