@@ -55,7 +55,8 @@ export default function Page() {
     oldPrice,
     productName,
     productImages,
-    popular
+    popular,
+    sale
 }`
         const res = await client.fetch(query)
 
@@ -148,8 +149,10 @@ export default function Page() {
                   key={product._id}
                   id={product._id}
                   name={product.productName}
-                  price={product.price}
+                  price={product.oldPrice}
+                  newPrice={product.price}
                   popular={product.popular}
+                  isSale={product.sale}
                   image={
                     product.productImages?.[0]
                       ? urlFor(product.productImages[0]).url()
